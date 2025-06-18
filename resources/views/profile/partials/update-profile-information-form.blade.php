@@ -23,6 +23,23 @@
             <x-input-error class="mt-2" :messages="$errors->get('nama')" />
         </div>
 
+       <div>
+        <x-input-label for="id_poli" value="Poli" class="text-black" />
+        <select name="id_poli" id="id_poli"
+            class="appearance-none bg-blue-950 text-bold text-balck font-semibold border border-black px-4 py-2 w-full dark:bg-blue-950 rounded-lg">
+            <option value="">-- Pilih Poli --</option>
+            @foreach ($polis as $poli)
+                <option value="{{ $poli->id }}" {{ old('id_poli', $user->id_poli) == $poli->id ? 'selected' : '' }}>
+                    {{ $poli->nama_poli }}
+                </option>
+            @endforeach
+        </select>
+        @error('id_poli')
+            <span class="text-sm text-red-600">{{ $message }}</span>
+        @enderror
+    </div>
+
+
         <div>
             <x-input-label for="email" :value="__('Email')" class="text-black text-bold" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />

@@ -13,6 +13,7 @@ class Janji_Periksa extends Model
         'status',
         'tanggal_periksa',
         'keluhan',
+        'no_antrian',
     ];
 
     public function pasien()
@@ -20,7 +21,7 @@ class Janji_Periksa extends Model
         return $this->belongsTo(User::class, 'id_pasien');
     }
 
-    public function jadwal()
+    public function jadwalPeriksa()
     {
         return $this->belongsTo(jadwal_periksa::class, 'id_jadwal');
     }

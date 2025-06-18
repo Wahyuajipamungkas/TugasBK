@@ -25,7 +25,7 @@ class User extends Authenticatable
         'no_hp',
         'no_ktp',
         'no_rm',
-        'poli',
+        'id_poli',
         'email',
         'password',
     ];
@@ -60,5 +60,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function poli()
+    {
+        return $this->belongsTo(Poli::class, 'id_poli');
     }
 }

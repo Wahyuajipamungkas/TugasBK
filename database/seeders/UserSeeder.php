@@ -23,7 +23,6 @@ class UserSeeder extends Seeder
                 'alamat' => 'Jl. Pahlawan No. 123, Jakarta Selatan',
                 'no_ktp' => '3175062505800001',
                 'no_hp' => '081234567890',
-                'poli' => 'Penyakit Dalam',
             ],
             [
                 'nama' => 'Bagus Setiawan',
@@ -33,7 +32,7 @@ class UserSeeder extends Seeder
                 'alamat' => 'jl.sampokong',
                 'no_ktp' => '70979797',
                 'no_hp' => '6986538658',
-                'poli' => 'Penyakit Dalam',
+                
             ],
         ];
 

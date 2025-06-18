@@ -22,7 +22,10 @@
                             {{ __('Dashboard') }}
                         </x-nav-link>
 
-						{{-- Tambah disini --}}
+                        <x-nav-link :href="route('dokter.memeriksa.index')" :active="request()->routeIs('dokter.obat.index')">
+                            {{ __('Memeriksa') }}
+                        </x-nav-link>
+
 						<x-nav-link :href="route('dokter.obat.index')" :active="request()->routeIs('dokter.obat.index')">
                             {{ __('Obat') }}
                         </x-nav-link>
@@ -33,10 +36,18 @@
 
 
                         @elseif(Auth::user()->role == 'pasien')
-                        <x-nav-link :href="route('pasien.dashboard')" :active="request()->routeIs('pasien.dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
-                    @endif
+                            <x-nav-link :href="route('pasien.dashboard')" :active="request()->routeIs('pasien.dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
+                            <!-- Link khusus pasien -->
+                            <x-nav-link :href="route('pasien.janji_periksa.index')" :active="request()->routeIs('pasien.janji_periksa.index')">
+                                {{ __('Janji Periksa') }}
+                            </x-nav-link>
+                            <!-- Link Riwayat Pasien -->
+                            <x-nav-link :href="route('pasien.riwayat_periksa.index')" :active="request()->routeIs('pasien.riwayat-periksa.index')">
+                                {{ __('Riwayat Periksa') }}
+                            </x-nav-link>
+                        @endif
                 </div>
             </div>
 
@@ -108,6 +119,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>

@@ -62,6 +62,21 @@ class ObatController extends Controller
         return redirect()->route('dokter.obat.index')->with('status', 'obat-updated');
     }
 
+    public function trashobat()
+    {
+        $trashedObats = Obat::onlyTrashed()->get();
+        return view('dokter.obat.restore', compact('trashedObats'));
+    }
+
+
+    public function restore($id)
+    {
+        $obat = Obat::withTrashed()->findOrFail($id);
+        $obat->restore();
+
+        return redirect()->route('dokter.obat.index')->with('status', 'Obat berhasil dipulihkan.');
+    }
+
     public function destroy($id)
     {
         $obat = Obat::find($id);
