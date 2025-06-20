@@ -11,7 +11,10 @@ class Poli extends Model
         'deskripsi',
     ];
 
-    public function dokters(){
-        return $this->hasMany(User::class, id_poli)->where('role','dokter');
+    // Di dalam model Poli
+    public function dokter()
+    {
+        return $this->hasMany(User::class, 'id_poli', 'id')->where('role', 'dokter');
     }
+
 }

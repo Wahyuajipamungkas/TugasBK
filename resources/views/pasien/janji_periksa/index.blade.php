@@ -34,7 +34,7 @@
                                     @foreach ($dokters as $dokter)
                                         @foreach ($dokter->jadwalPeriksa as $jadwal)
                                             <option value="{{ $dokter->id }}">
-                                                {{ $dokter->nama }} - Spesialis {{ $dokter->poli }} |
+                                                {{ $dokter->nama }} - Spesialis {{ $dokter->poli->nama_poli }} |
                                                 {{ $jadwal->hari }},
                                                 {{ \Carbon\Carbon::parse($jadwal->jam_mulai)->format('H.i') }} -
                                                 {{ \Carbon\Carbon::parse($jadwal->jam_selesai)->format('H.i') }}

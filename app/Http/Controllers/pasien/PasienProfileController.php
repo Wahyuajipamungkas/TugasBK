@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\pasien;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Poli;
 use Illuminate\Http\RedirectResponse;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-class ProfileController extends Controller
+class PasienProfileController extends Controller
 {
     /**
      * Display the user's profile form.
@@ -18,9 +19,8 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $polis = Poli::all();
-        return view('profile.edit', [
+        return view('pasien.profile.edit', [
             'user' => $request->user(),
-            'polis' => $polis,
         ]);
     }
 
@@ -37,10 +37,10 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('pasien.profile.edit')->with('status', 'profile-updated');
     }
 
-    
+
 
 
     /**

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-class ProfilDokterController extends Controller
+class DokterProfilDokterController extends Controller
 {
     /**
      * Display the user's profile form.
@@ -19,7 +19,7 @@ class ProfilDokterController extends Controller
     public function edit(Request $request): View
     {
         $polis = Poli::all();
-        return view('profile.edit', [
+        return view('dokter.profile.edit', [
             'user' => $request->user(),
             'polis' => $polis,
         ]);
@@ -38,7 +38,7 @@ class ProfilDokterController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('dokter.profile.edit')->with('status', 'profile-updated');
     }
 
 

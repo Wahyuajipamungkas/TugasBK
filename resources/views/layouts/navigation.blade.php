@@ -66,10 +66,19 @@
                         </button>
                     </x-slot>
 
+
+
                     <x-slot name="content">
-                        <x-dropdown-link class="text-black" :href="route('profile.edit')">
+                         @if (Auth::user()->role == 'dokter')
+                            <x-dropdown-link class="text-black" :href="route('dokter.profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
+                        @elseif(Auth::user()->role == 'pasien')
+                            <x-dropdown-link class="text-black" :href="route('pasien.profile.edit')">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>
+                        @endif
+
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -119,10 +128,15 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                
-                <x-responsive-nav-link :href="route('profile.edit')">
+                 @if (Auth::user()->role == 'dokter')
+                     <x-responsive-nav-link :href="route('dokter.profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+                @elseif(Auth::user()->role == 'pasien')
+                    <x-responsive-nav-link :href="route('pasien.profile.edit')">
+                    {{ __('Profile') }}
+                    </x-responsive-nav-link>
+                @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
